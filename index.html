@@ -4,141 +4,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAGINOLO Catering | Good Food, Beautifully Served</title>
+<title>KAGINOLO | Premium Catering</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f7f3eb;color:#24231f}
-header{background:#20211f;color:#f7f3eb;padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:23px;font-weight:800;letter-spacing:3px}
-.logo small{display:block;font-size:10px;letter-spacing:5px;margin-top:5px}
-nav a{color:#f7f3eb;text-decoration:none;margin-left:20px;font-size:13px}
-.hero{padding:85px 8%;background:#292a27;color:#fff;text-align:center}
-.hero .eyebrow{color:#d8bd8b;letter-spacing:4px;font-size:11px}
-.hero h1{font-size:clamp(38px,8vw,68px);margin:20px 0;letter-spacing:2px}
-.hero p{color:#dedbd3;line-height:1.7;max-width:520px;margin:auto}
-.btn{display:inline-block;background:#c7a66d;color:#20211f;padding:15px 28px;text-decoration:none;font-weight:bold;margin-top:28px;font-size:12px;letter-spacing:1px}
-section{padding:65px 8%}
-.heading{text-align:center;margin-bottom:35px}
-.heading small{color:#9b7845;letter-spacing:3px}
-.heading h2{font-size:32px;margin-top:12px}
-.intro{text-align:center;max-width:650px;margin:0 auto;line-height:1.8;color:#68645d}
-.platter-placeholder{margin:35px auto 0;max-width:650px;min-height:220px;background:#e7dfd0;display:flex;align-items:center;justify-content:center;text-align:center;color:#786b57;padding:25px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:35px}
-.card{background:#fff;padding:28px;text-align:center;border:1px solid #e8e0d3}
-.card h3{margin-bottom:12px}
-.card p{color:#6d6962;line-height:1.6;font-size:14px}
-.order{background:#20211f;color:#fff}
-.order .heading h2{color:#fff}
-form{max-width:600px;margin:auto}
-label{display:block;margin:17px 0 7px;font-size:13px}
-input,select,textarea{width:100%;padding:14px;border:1px solid #d6cdbd;background:#fff;font-size:15px;border-radius:2px}
-textarea{min-height:90px}
-form button{width:100%;border:0;cursor:pointer}
-.note{text-align:center;color:#d9d1c5;font-size:12px;margin-top:18px;line-height:1.6}
-footer{background:#171815;color:#c9c2b6;text-align:center;padding:30px;font-size:12px;line-height:2}
-@media(max-width:600px){header{padding:18px 5%;flex-direction:column;gap:15px}nav a{margin:0 8px}.hero{padding:65px 7%}section{padding:55px 6%}}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,serif;background:#f5f1e9;color:#25251f}
+header{background:#20211e;color:#f5f1e9;padding:25px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;letter-spacing:5px;font-weight:bold}
+.logo span{display:block;font:10px Arial;letter-spacing:6px;text-align:center;margin-top:6px}
+nav{display:flex;gap:25px}
+nav a{font:11px Arial;letter-spacing:1px;color:#eee8dc;text-decoration:none}
+.hero{min-height:570px;background:linear-gradient(90deg,rgba(20,21,18,.88),rgba(20,21,18,.25)),url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1800') center/cover;display:flex;align-items:center;padding:80px 9%;color:white}
+.hero-content{max-width:600px}
+.eyebrow{font:11px Arial;letter-spacing:4px;color:#d4b982}
+h1{font-size:clamp(43px,7vw,78px);font-weight:normal;line-height:1.08;margin:25px 0}
+.hero p{font:15px Arial;line-height:1.9;color:#e4dfd4;max-width:440px}
+.btn{display:inline-block;background:#c6a66f;color:#20211e;text-decoration:none;padding:17px 28px;font:11px Arial;letter-spacing:2px;margin-top:30px}
+section{padding:85px 8%}
+.section-top{text-align:center;margin-bottom:45px}
+.section-top small{font:11px Arial;letter-spacing:4px;color:#9d7944}
+.section-top h2{font-size:38px;font-weight:normal;margin-top:15px}
+.intro{max-width:650px;margin:auto;text-align:center;font:15px Arial;line-height:2;color:#69675f}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery img{width:100%;height:280px;object-fit:cover}
+.gallery-item p{text-align:center;font-size:19px;margin-top:15px}
+.packages{background:#e9e2d5}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#f8f5ee;padding:38px 25px;text-align:center}
+.card h3{font-size:23px;font-weight:normal;margin-bottom:15px}
+.card p{font:13px Arial;line-height:1.9;color:#6b685f}
+.card a{display:inline-block;color:#92713e;font:11px Arial;letter-spacing:2px;margin-top:22px;text-decoration:none}
+.delivery{background:#242520;color:#f5f1e9;text-align:center}
+.delivery h2{font-size:36px;font-weight:normal;margin:18px 0}
+.delivery p{font:14px Arial;color:#d0cabe;line-height:2}
+.order{text-align:center}
+.order p{font:14px Arial;line-height:2;color:#66645d;max-width:540px;margin:20px auto}
+footer{background:#171815;color:#c8c0b2;text-align:center;padding:40px 15px;font:11px Arial;letter-spacing:2px;line-height:2.5}
+@media(max-width:700px){
+header{flex-direction:column;gap:22px}
+nav{gap:15px}
+.hero{min-height:520px;padding:65px 7%}
+section{padding:65px 7%}
+.gallery,.cards{grid-template-columns:1fr}
+.gallery img{height:260px}
+.section-top h2{font-size:31px}
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">KAGINOLO<small>CATERING</small></div>
+<div class="logo">KAGINOLO<span>CATERING</span></div>
 <nav>
 <a href="#about">ABOUT</a>
 <a href="#platters">PLATTERS</a>
-<a href="#order">ORDER</a>
+<a href="#contact">CONTACT</a>
 </nav>
 </header>
 
-<main>
 <div class="hero">
-<div class="eyebrow">GOOD FOOD. BEAUTIFULLY SERVED.</div>
-<h1>MAKE EVERY<br>GATHERING SPECIAL.</h1>
-<p>Beautifully prepared platters for celebrations, family gatherings, events and everything worth sharing.</p>
-<a class="btn" href="#platters">EXPLORE OUR PLATTERS</a>
+<div class="hero-content">
+<div class="eyebrow">THE ART OF GOOD FOOD</div>
+<h1>Made to be<br>shared.</h1>
+<p>Thoughtfully prepared catering and beautifully presented platters for gatherings, celebrations and moments worth remembering.</p>
+<a class="btn" href="#platters">DISCOVER KAGINOLO</a>
+</div>
 </div>
 
 <section id="about">
-<div class="heading">
-<small>WELCOME TO KAGINOLO</small>
-<h2>Food brings people together.</h2>
+<div class="section-top">
+<small>OUR PHILOSOPHY</small>
+<h2>More than just food.</h2>
 </div>
-<p class="intro">At KAGINOLO Catering, we believe good food makes every occasion better. We prepare delicious, thoughtfully presented platters made for sharing.</p>
+<p class="intro">At KAGINOLO, every gathering deserves something special. We bring people together through delicious food, thoughtful presentation and a passion for serving memorable experiences.</p>
 </section>
 
 <section id="platters">
-<div class="heading">
-<small>MADE FOR SHARING</small>
-<h2>Our Platters</h2>
+<div class="section-top">
+<small>PREPARED WITH CARE</small>
+<h2>Our Food</h2>
 </div>
-<div class="platter-placeholder">
-Your KAGINOLO platter photography will appear here.
+<div class="gallery">
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800" alt="Fresh food presentation">
+<p>Fresh & Delicious</p>
+</div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" alt="Grilled food">
+<p>Made for Sharing</p>
+</div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?w=800" alt="Beautifully prepared food">
+<p>Beautifully Served</p>
+</div>
+</div>
+</section>
+
+<section class="packages">
+<div class="section-top">
+<small>FOR EVERY OCCASION</small>
+<h2>What We Offer</h2>
 </div>
 <div class="cards">
 <div class="card">
 <h3>Sharing Platters</h3>
-<p>A selection of delicious bites for friends, family and guests.</p>
+<p>Generous selections made for family, friends and guests.</p>
+<a href="#contact">ENQUIRE →</a>
 </div>
 <div class="card">
 <h3>Event Catering</h3>
-<p>Food prepared for gatherings, celebrations and special occasions.</p>
+<p>Food for celebrations, special occasions and gatherings.</p>
+<a href="#contact">ENQUIRE →</a>
 </div>
 <div class="card">
 <h3>Custom Orders</h3>
-<p>Have something particular in mind? Send us your request.</p>
+<p>Tell us what you have in mind and let's plan something special.</p>
+<a href="#contact">ENQUIRE →</a>
 </div>
 </div>
 </section>
 
-<section class="order" id="order">
-<div class="heading">
-<small>LET'S GET YOUR ORDER STARTED</small>
-<h2>Place an Order</h2>
-</div>
-<form action="mailto:" method="get" enctype="text/plain">
-<label>Your name</label>
-<input name="Name" required placeholder="Full name">
-
-<label>Contact number</label>
-<input name="Contact" type="tel" required placeholder="Your phone number">
-
-<label>What would you like to order?</label>
-<select name="Order" required>
-<option value="">Choose an option</option>
-<option>Sharing platter</option>
-<option>Event catering</option>
-<option>Custom order</option>
-</select>
-
-<label>Number of people</label>
-<input name="Guests" type="number" min="1" placeholder="e.g. 10">
-
-<label>Collection or delivery?</label>
-<select name="Delivery" required>
-<option value="">Choose one</option>
-<option>Collection</option>
-<option>Delivery</option>
-</select>
-
-<label>Delivery address (if applicable)</label>
-<textarea name="Address" placeholder="Suburb, street and area"></textarea>
-
-<label>Preferred date</label>
-<input name="Date" type="date">
-
-<label>Additional details</label>
-<textarea name="Details" placeholder="Tell us what you have in mind"></textarea>
-
-<button class="btn" type="submit">SUBMIT ORDER REQUEST</button>
-<p class="note">Delivery available in Pretoria, Centurion and Midrand.<br>Orders are reviewed and confirmed by KAGINOLO before payment is arranged. Delivery fees are confirmed separately.</p>
-</form>
+<section class="delivery">
+<div class="eyebrow">SERVING YOUR AREA</div>
+<h2>Good food, delivered.</h2>
+<p>Delivery and collection available.</p>
+<p>Pretoria · Centurion · Midrand</p>
 </section>
-</main>
+
+<section class="order" id="contact">
+<div class="section-top">
+<small>LET'S MAKE IT SPECIAL</small>
+<h2>Let's talk catering.</h2>
+</div>
+<p>Planning a gathering or looking for the perfect platter? Get in touch with KAGINOLO to discuss your requirements and receive a quote.</p>
+<a class="btn" href="mailto:">CONTACT KAGINOLO</a>
+</section>
 
 <footer>
 KAGINOLO CATERING<br>
-Good food. Beautifully served.<br>
-Pretoria · Centurion · Midrand
+GOOD FOOD. BEAUTIFULLY SERVED.<br>
+PRETORIA · CENTURION · MIDRAND
 </footer>
 
 </body>

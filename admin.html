@@ -99,7 +99,10 @@ loginForm.addEventListener("submit", async (event) => {
     email,
     password
   });
-
+if (error) {
+  message.textContent = "Login failed: " + error.message;
+  return;
+}
  message.textContent = "Login failed: " + error.message;
   }
 

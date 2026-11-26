@@ -100,9 +100,7 @@ loginForm.addEventListener("submit", async (event) => {
     password
   });
 
-  if (error) {
-    message.textContent = "Login failed. Check your details.";
-    return;
+ message.textContent = "Login failed: " + error.message;
   }
 
   const { data, error: adminError } =

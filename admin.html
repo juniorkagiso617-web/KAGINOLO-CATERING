@@ -103,8 +103,7 @@ if (error) {
   message.textContent = "Login failed: " + error.message;
   return;
 }
- message.textContent = "Login failed: " + error.message;
-  }
+ 
 
   const { data, error: adminError } =
     await supabaseClient.rpc("is_kaginolo_admin");

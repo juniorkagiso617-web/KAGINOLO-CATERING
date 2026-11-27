@@ -71,9 +71,12 @@ p { color: #b9b1a5; }
 <p>Manage photos and descriptions.</p>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-gconst SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+<script>
+const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+
 const SUPABASE_KEY = "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
 
 const supabaseClient = window.supabase.createClient(
@@ -85,36 +88,41 @@ const loginForm = document.getElementById("login-form");
 const loginPanel = document.getElementById("login-panel");
 const dashboard = document.getElementById("dashboard");
 const message = document.getElementById("login-message");
-  
-  loginForm.addEventListener("submit", async (event) => {
+
+loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   message.textContent = "Signing in...";
 
-  const email = document.getElementById("email").value;
+  const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  const { error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
-  });
-if (error) {
-  message.textContent = "Login failed: " + error.message;
-  return;
-}
- 
+  try {
+    const { error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
 
-  const { data, error: adminError } =
-    await supabaseClient.rpc("is_kaginolo_admin");
+    if (error) {
+      message.textContent = "Login failed: " + error.message;
+      return;
+    }
 
-  if (adminError || data !== true) {
-    await supabaseClient.auth.signOut();
-    message.textContent = "This account is not authorised.";
-    return;
+    const { data, error: adminError } =
+      await supabaseClient.rpc("is_kaginolo_admin");
+
+    if (adminError || data !== true) {
+      await supabaseClient.auth.signOut();
+      message.textContent = "This account is not authorised.";
+      return;
+    }
+
+    loginPanel.hidden = true;
+    dashboard.hidden = false;
+
+  } catch (error) {
+    message.textContent = "Something went wrong: " + error.message;
   }
-
-  loginPanel.hidden = true;
-  dashboard.hidden = false;
 });
 </script>
 </body>

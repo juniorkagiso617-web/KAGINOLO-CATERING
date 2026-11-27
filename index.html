@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KAGINOLO | Premium Catering</title>
@@ -155,6 +156,528 @@ PRETORIA · CENTURION · MIDRAND
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY);
 console.log("KAGINOLO Supabase client loaded:", !!supabaseClient);
+</script>
+
+<style>
+.platter-menu {
+  padding: 65px 20px;
+  background: #f5f2ec;
+  color: #292820;
+}
+.platter-menu .menu-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+.platter-menu .menu-heading {
+  margin-bottom: 30px;
+}
+.platter-menu .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 22px;
+}
+.platter-menu .menu-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.platter-menu .menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.platter-menu .menu-card .menu-info {
+  padding: 18px;
+}
+.platter-menu .menu-card h3 {
+  margin-top: 0;
+}
+.platter-menu .menu-price {
+  font-size: 22px;
+  font-weight: bold;
+}
+.platter-menu .menu-card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #292820;
+  font-weight: bold;
+}
+</style>
+
+<script>
+(async function () {
+  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const section = document.createElement("section");
+  section.className = "platter-menu";
+
+  const inner = document.createElement("div");
+  inner.className = "menu-inner";
+
+  const heading = document.createElement("div");
+  heading.className = "menu-heading";
+
+  const small = document.createElement("small");
+  small.textContent = "MADE WITH CARE";
+
+  const title = document.createElement("h2");
+  title.textContent = "Our Platters";
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
+
+  heading.append(small, title, subtitle);
+
+  const grid = document.createElement("div");
+  grid.className = "menu-grid";
+
+  inner.append(heading, grid);
+  section.appendChild(inner);
+
+  const deliverySection = document.querySelector(".delivery");
+
+  if (deliverySection) {
+    deliverySection.before(section);
+  } else {
+    document.body.appendChild(section);
+  }
+
+  const { data, error } = await client
+    .from("menu_items")
+    .select("id,name,description,category,price,serves,image_url")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
+    grid.appendChild(notice);
+    console.error("Menu loading error:", error.message);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter collection is being updated. Please check back soon.";
+    grid.appendChild(notice);
+    return;
+  }
+
+  data.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "menu-card";
+
+    if (item.image_url) {
+      const image = document.createElement("img");
+      image.src = item.image_url;
+      image.alt = item.name;
+      image.loading = "lazy";
+      card.appendChild(image);
+    }
+
+    const info = document.createElement("div");
+    info.className = "menu-info";
+
+    const name = document.createElement("h3");
+    name.textContent = item.name;
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "";
+
+    const serves = document.createElement("p");
+    serves.textContent = item.serves ? "Serves " + item.serves : "";
+
+    const price = document.createElement("p");
+    price.className = "menu-price";
+    price.textContent = "R" + Number(item.price).toFixed(2);
+
+    const link = document.createElement("a");
+    link.href = "#contact";
+    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
+
+    info.append(name, description, serves, price, link);
+    card.appendChild(info);
+    grid.appendChild(card);
+  });
+})();
+</script>
+
+<style>
+.platter-menu {
+  padding: 65px 20px;
+  background: #f5f2ec;
+  color: #292820;
+}
+.platter-menu .menu-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+.platter-menu .menu-heading {
+  margin-bottom: 30px;
+}
+.platter-menu .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 22px;
+}
+.platter-menu .menu-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.platter-menu .menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.platter-menu .menu-card .menu-info {
+  padding: 18px;
+}
+.platter-menu .menu-card h3 {
+  margin-top: 0;
+}
+.platter-menu .menu-price {
+  font-size: 22px;
+  font-weight: bold;
+}
+.platter-menu .menu-card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #292820;
+  font-weight: bold;
+}
+</style>
+
+<script>
+(async function () {
+  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const section = document.createElement("section");
+  section.className = "platter-menu";
+
+  const inner = document.createElement("div");
+  inner.className = "menu-inner";
+
+  const heading = document.createElement("div");
+  heading.className = "menu-heading";
+
+  const small = document.createElement("small");
+  small.textContent = "MADE WITH CARE";
+
+  const title = document.createElement("h2");
+  title.textContent = "Our Platters";
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
+
+  heading.append(small, title, subtitle);
+
+  const grid = document.createElement("div");
+  grid.className = "menu-grid";
+
+  inner.append(heading, grid);
+  section.appendChild(inner);
+
+  const deliverySection = document.querySelector(".delivery");
+
+  if (deliverySection) {
+    deliverySection.before(section);
+  } else {
+    document.body.appendChild(section);
+  }
+
+  const { data, error } = await client
+    .from("menu_items")
+    .select("id,name,description,category,price,serves,image_url")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
+    grid.appendChild(notice);
+    console.error("Menu loading error:", error.message);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter collection is being updated. Please check back soon.";
+    grid.appendChild(notice);
+    return;
+  }
+
+  data.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "menu-card";
+
+    if (item.image_url) {
+      const image = document.createElement("img");
+      image.src = item.image_url;
+      image.alt = item.name;
+      image.loading = "lazy";
+      card.appendChild(image);
+    }
+
+    const info = document.createElement("div");
+    info.className = "menu-info";
+
+    const name = document.createElement("h3");
+    name.textContent = item.name;
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "";
+
+    const serves = document.createElement("p");
+    serves.textContent = item.serves ? "Serves " + item.serves : "";
+
+    const price = document.createElement("p");
+    price.className = "menu-price";
+    price.textContent = "R" + Number(item.price).toFixed(2);
+
+    const link = document.createElement("a");
+    link.href = "#contact";
+    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
+
+    info.append(name, description, serves, price, link);
+    card.appendChild(info);
+    grid.appendChild(card);
+  });
+})();
+</script>
+
+<style>
+.platter-menu {
+  padding: 65px 20px;
+  background: #f5f2ec;
+  color: #292820;
+}
+.platter-menu .menu-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+.platter-menu .menu-heading {
+  margin-bottom: 30px;
+}
+.platter-menu .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 22px;
+}
+.platter-menu .menu-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.platter-menu .menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.platter-menu .menu-card .menu-info {
+  padding: 18px;
+}
+.platter-menu .menu-card h3 {
+  margin-top: 0;
+}
+.platter-menu .menu-price {
+  font-size: 22px;
+  font-weight: bold;
+}
+.platter-menu .menu-card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #292820;
+  font-weight: bold;
+}
+</style>
+
+<script>
+(async function () {
+  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const section = document.createElement("section");
+  section.className = "platter-menu";
+
+  const inner = document.createElement("div");
+  inner.className = "menu-inner";
+
+  const heading = document.createElement("div");
+  heading.className = "menu-heading";
+
+  const small = document.createElement("small");
+  small.textContent = "MADE WITH CARE";
+
+  const title = document.createElement("h2");
+  title.textContent = "Our Platters";
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
+
+  heading.append(small, title, subtitle);
+
+  const grid = document.createElement("div");
+  grid.className = "menu-grid";
+
+  inner.append(heading, grid);
+  section.appendChild(inner);
+
+  const deliverySection = document.querySelector(".delivery");
+
+  if (deliverySection) {
+    deliverySection.before(section);
+  } else {
+    document.body.appendChild(section);
+  }
+
+  const { data, error } = await client
+    .from("menu_items")
+    .select("id,name,description,category,price,serves,image_url")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
+    grid.appendChild(notice);
+    console.error("Menu loading error:", error.message);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    const notice = document.createElement("p");
+    notice.textContent = "Our platter collection is being updated. Please check back soon.";
+    grid.appendChild(notice);
+    return;
+  }
+
+  data.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "menu-card";
+
+    if (item.image_url) {
+      const image = document.createElement("img");
+      image.src = item.image_url;
+      image.alt = item.name;
+      image.loading = "lazy";
+      card.appendChild(image);
+    }
+
+    const info = document.createElement("div");
+    info.className = "menu-info";
+
+    const name = document.createElement("h3");
+    name.textContent = item.name;
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "";
+
+    const serves = document.createElement("p");
+    serves.textContent = item.serves ? "Serves " + item.serves : "";
+
+    const price = document.createElement("p");
+    price.className = "menu-price";
+    price.textContent = "R" + Number(item.price).toFixed(2);
+
+    const link = document.createElement("a");
+    link.href = "#contact";
+    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
+
+    info.append(name, description, serves, price, link);
+    card.appendChild(info);
+    grid.appendChild(card);
+  });
+})();
+</script>
+<section class="platter-menu">
+  <h2>Our Platters</h2>
+  <p>Discover the KAGINOLO collection.</p>
+  <div id="platter-list">Loading our platters...</div>
+</section>
+<script>
+const KAGINOLO_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+const KAGINOLO_KEY = "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
+
+const menuClient = window.supabase.createClient(
+  KAGINOLO_URL,
+  KAGINOLO_KEY
+);
+</script>
+<script>
+async function loadKaginoloPlatters() {
+  const list = document.getElementById("platter-list");
+  list.textContent = "Loading platters...";
+
+  const { data, error } = await menuClient
+    .from("menu_items")
+    .select("name,description,price,serves,image_url")
+    .eq("is_published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    list.textContent = "Please contact us for our platter menu.";
+    console.error(error);
+    return;
+  }
+
+  list.replaceChildren();
+
+  if (!data || data.length === 0) {
+    list.textContent = "Our platter menu is being updated.";
+    return;
+  }
+
+  data.forEach(item => {
+    const card = document.createElement("div");
+    card.style.cssText = "background:white;padding:20px;margin:15px 0;border-radius:10px;";
+
+    if (item.image_url) {
+      const img = document.createElement("img");
+      img.src = item.image_url;
+      img.alt = item.name;
+      img.style.cssText = "width:100%;max-height:250px;object-fit:cover;border-radius:8px;";
+      card.appendChild(img);
+    }
+
+    const name = document.createElement("h3");
+    name.textContent = item.name;
+
+    const description = document.createElement("p");
+    description.textContent = item.description || "";
+
+    const serves = document.createElement("p");
+    serves.textContent = "Serves " + (item.serves || "Available on request");
+
+    const price = document.createElement("h3");
+    price.textContent = "R" + Number(item.price).toFixed(2);
+
+    card.append(name, description, serves, price);
+    list.appendChild(card);
+  });
+}
+
+loadKaginoloPlatters();
 </script>
 </body>
 </html>

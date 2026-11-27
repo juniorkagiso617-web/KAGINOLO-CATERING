@@ -5,7 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111111">
+
 <title>KAGINOLO | Premium Catering</title>
+
 <meta name="description" content="KAGINOLO Catering — beautifully prepared platters and catering for gatherings, celebrations and special occasions.">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -22,18 +24,26 @@
   --line:rgba(198,166,111,.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 html{scroll-behavior:smooth}
+
 body{
   background:var(--black);
   color:var(--cream);
   font-family:Arial,sans-serif;
   line-height:1.6;
 }
+
 a{color:inherit}
 img{display:block;max-width:100%}
 
 /* HEADER */
+
 header{
   min-height:88px;
   padding:20px 7%;
@@ -43,6 +53,7 @@ header{
   background:#101010;
   border-bottom:1px solid var(--line);
 }
+
 .logo{
   font-family:Georgia,serif;
   font-size:25px;
@@ -50,6 +61,7 @@ header{
   font-weight:bold;
   color:var(--cream);
 }
+
 .logo span{
   display:block;
   text-align:center;
@@ -58,7 +70,13 @@ header{
   color:var(--gold);
   margin-top:5px;
 }
-nav{display:flex;gap:25px;flex-wrap:wrap}
+
+nav{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
 nav a{
   text-decoration:none;
   color:#ded8ce;
@@ -66,9 +84,11 @@ nav a{
   letter-spacing:2px;
   transition:color .2s;
 }
+
 nav a:hover{color:var(--gold)}
 
 /* BUTTONS */
+
 .btn{
   display:inline-block;
   background:var(--gold);
@@ -80,13 +100,21 @@ nav a:hover{color:var(--gold)}
   letter-spacing:2px;
   transition:.2s;
   border:1px solid var(--gold);
+  cursor:pointer;
 }
+
 .btn:hover{
   background:transparent;
   color:var(--gold);
 }
 
+.btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 /* HERO */
+
 .hero{
   min-height:650px;
   display:flex;
@@ -96,13 +124,16 @@ nav a:hover{color:var(--gold)}
     linear-gradient(90deg,rgba(8,8,8,.94),rgba(8,8,8,.65),rgba(8,8,8,.3)),
     url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1800') center/cover;
 }
+
 .hero-content{max-width:650px}
+
 .eyebrow{
   color:var(--gold);
   font-size:10px;
   letter-spacing:5px;
   text-transform:uppercase;
 }
+
 .hero h1{
   font-family:Georgia,serif;
   font-size:clamp(48px,8vw,88px);
@@ -110,7 +141,9 @@ nav a:hover{color:var(--gold)}
   line-height:1.05;
   margin:25px 0;
 }
+
 .hero h1 span{color:var(--gold-light)}
+
 .hero p{
   max-width:480px;
   color:#d0cbc2;
@@ -118,6 +151,7 @@ nav a:hover{color:var(--gold)}
   line-height:2;
   margin-bottom:15px;
 }
+
 .hero-note{
   display:block;
   margin-top:25px;
@@ -127,24 +161,29 @@ nav a:hover{color:var(--gold)}
 }
 
 /* GENERAL SECTIONS */
+
 section{padding:95px 8%}
+
 .section-heading{
   text-align:center;
   max-width:680px;
   margin:0 auto 50px;
 }
+
 .section-heading small{
   color:var(--gold);
   font-size:10px;
   letter-spacing:4px;
   text-transform:uppercase;
 }
+
 .section-heading h2{
   font-family:Georgia,serif;
   font-size:clamp(32px,5vw,46px);
   font-weight:normal;
   margin:14px 0;
 }
+
 .section-heading p{
   color:var(--muted);
   font-size:13px;
@@ -152,10 +191,12 @@ section{padding:95px 8%}
 }
 
 /* ABOUT */
+
 .about{
   background:var(--black);
   text-align:center;
 }
+
 .about-copy{
   max-width:720px;
   margin:auto;
@@ -166,12 +207,15 @@ section{padding:95px 8%}
 }
 
 /* SERVICES */
+
 .services{background:#181818}
+
 .service-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
+
 .service-card{
   border:1px solid var(--line);
   background:#1d1d1d;
@@ -179,22 +223,26 @@ section{padding:95px 8%}
   text-align:center;
   transition:transform .2s,border-color .2s;
 }
+
 .service-card:hover{
   transform:translateY(-4px);
   border-color:var(--gold);
 }
+
 .service-number{
   color:var(--gold);
   font-family:Georgia,serif;
   font-size:25px;
   margin-bottom:18px;
 }
+
 .service-card h3{
   font-family:Georgia,serif;
   font-size:23px;
   font-weight:normal;
   margin-bottom:13px;
 }
+
 .service-card p{
   color:var(--muted);
   font-size:12px;
@@ -202,17 +250,21 @@ section{padding:95px 8%}
 }
 
 /* MENU */
+
 .menu-section{background:#111}
+
 .menu-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
   gap:24px;
 }
+
 .menu-card{
   background:#1d1d1d;
   border:1px solid var(--line);
   overflow:hidden;
 }
+
 .menu-image{
   height:220px;
   background:#29251e;
@@ -224,38 +276,36 @@ section{padding:95px 8%}
   font-size:18px;
   letter-spacing:4px;
 }
+
 .menu-image img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
+
 .menu-info{padding:25px}
+
 .menu-info h3{
   font-family:Georgia,serif;
   font-size:23px;
   font-weight:normal;
   margin-bottom:12px;
 }
+
 .menu-info p{
   color:var(--muted);
   font-size:12px;
   line-height:1.9;
   margin:8px 0;
 }
+
 .menu-price{
   color:var(--gold-light)!important;
   font-size:21px!important;
   font-weight:bold;
   margin-top:17px!important;
 }
-.menu-link{
-  display:inline-block;
-  color:var(--gold);
-  text-decoration:none;
-  font-size:10px;
-  letter-spacing:1px;
-  margin-top:17px;
-}
+
 .menu-notice{
   grid-column:1/-1;
   text-align:center;
@@ -265,25 +315,31 @@ section{padding:95px 8%}
 }
 
 /* GALLERY */
+
 .gallery-section{background:#191919}
+
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:16px;
 }
+
 .gallery-item{
   position:relative;
   min-height:260px;
   background:#29251e;
   overflow:hidden;
 }
+
 .gallery-item img{
   width:100%;
   height:280px;
   object-fit:cover;
   transition:transform .5s;
 }
+
 .gallery-item:hover img{transform:scale(1.04)}
+
 .gallery-item.image-fallback::after{
   content:"KAGINOLO";
   position:absolute;
@@ -297,6 +353,7 @@ section{padding:95px 8%}
   letter-spacing:5px;
   background:#29251e;
 }
+
 .gallery-label{
   position:absolute;
   bottom:0;
@@ -311,23 +368,27 @@ section{padding:95px 8%}
 }
 
 /* DELIVERY */
+
 .delivery{
   background:#171717;
   text-align:center;
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
+
 .delivery h2{
   font-family:Georgia,serif;
   font-weight:normal;
   font-size:clamp(32px,5vw,45px);
   margin:18px 0;
 }
+
 .delivery p{
   color:#c0b9ad;
   font-size:13px;
   line-height:2;
 }
+
 .delivery .areas{
   color:var(--gold-light);
   letter-spacing:2px;
@@ -335,10 +396,12 @@ section{padding:95px 8%}
 }
 
 /* CONTACT */
+
 .contact{
   background:#111;
   text-align:center;
 }
+
 .contact-copy{
   max-width:570px;
   margin:0 auto;
@@ -346,46 +409,114 @@ section{padding:95px 8%}
   font-size:13px;
   line-height:2;
 }
-.contact-pending{
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 18px;
-  border:1px solid var(--line);
+
+/* CUSTOMER ENQUIRY FORM */
+
+.enquiry-form{
+  max-width:760px;
+  margin:35px auto 0;
+  text-align:left;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.full-width{grid-column:1/-1}
+
+.form-field label{
   color:var(--gold-light);
-  font-size:10px;
-  letter-spacing:2px;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea{
+  width:100%;
+  padding:14px;
+  background:#1d1d1d;
+  border:1px solid var(--line);
+  color:var(--cream);
+  font:13px Arial,sans-serif;
+  border-radius:0;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{
+  outline:1px solid var(--gold);
+}
+
+.form-field select option{background:#1d1d1d}
+
+.form-field textarea{
+  resize:vertical;
+  min-height:120px;
+}
+
+.delivery-notice{
+  margin:25px 0;
+  padding:18px;
+  background:#1d1d1d;
+  border-left:2px solid var(--gold);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+}
+
+.delivery-notice strong{color:var(--gold-light)}
+
+#enquiry-message{
+  margin-top:18px;
+  font-size:13px;
+  color:var(--gold-light);
 }
 
 /* FOOTER */
+
 footer{
   background:#090909;
   border-top:1px solid var(--line);
   padding:50px 20px 30px;
   text-align:center;
 }
+
 .footer-name{
   font-family:Georgia,serif;
   font-size:27px;
   letter-spacing:6px;
   color:var(--cream);
 }
+
 .footer-sub{
   color:var(--gold);
   font-size:9px;
   letter-spacing:5px;
   margin:8px 0 25px;
 }
+
 .footer-areas{
   color:#d0c8bc;
   font-size:10px;
   letter-spacing:2px;
 }
+
 .footer-tagline{
   color:#aaa49a;
   font-family:Georgia,serif;
   font-size:14px;
   margin:15px 0;
 }
+
 .footer-copy{
   color:#77736c;
   font-size:9px;
@@ -394,19 +525,43 @@ footer{
 }
 
 /* MOBILE */
+
 @media(max-width:760px){
+
   header{
     flex-direction:column;
     gap:20px;
     padding:23px 5%;
   }
-  nav{justify-content:center;gap:16px}
+
+  nav{
+    justify-content:center;
+    gap:16px;
+  }
+
   nav a{font-size:9px}
-  .hero{min-height:570px;padding:70px 7%}
+
+  .hero{
+    min-height:570px;
+    padding:70px 7%;
+  }
+
   section{padding:70px 7%}
-  .service-grid,.gallery-grid{grid-template-columns:1fr}
+
+  .service-grid,
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
   .gallery-item img{height:250px}
+
   .service-card{padding:30px 22px}
+
+  .form-grid{grid-template-columns:1fr}
+
+  .full-width{grid-column:auto}
+
+  .enquiry-form{width:100%}
 }
 </style>
 </head>
@@ -418,6 +573,7 @@ footer{
     KAGINOLO
     <span>CATERING</span>
   </div>
+
   <nav>
     <a href="#about">ABOUT</a>
     <a href="#services">SERVICES</a>
@@ -429,24 +585,33 @@ footer{
 
 <main>
 
+<!-- HERO -->
+
 <div class="hero">
   <div class="hero-content">
     <div class="eyebrow">THE ART OF GOOD FOOD</div>
+
     <h1>Made to be<br><span>shared.</span></h1>
+
     <p>
       Thoughtfully prepared catering and beautifully presented
       platters for gatherings, celebrations and moments worth remembering.
     </p>
+
     <a class="btn" href="#menu">EXPLORE OUR MENU</a>
+
     <span class="hero-note">GOOD FOOD. BEAUTIFULLY SERVED.</span>
   </div>
 </div>
+
+<!-- ABOUT -->
 
 <section class="about" id="about">
   <div class="section-heading">
     <small>OUR PHILOSOPHY</small>
     <h2>More than just food.</h2>
   </div>
+
   <p class="about-copy">
     At KAGINOLO, every gathering deserves something special.
     We bring people together through delicious food, thoughtful
@@ -454,16 +619,20 @@ footer{
   </p>
 </section>
 
+<!-- SERVICES -->
+
 <section class="services" id="services">
   <div class="section-heading">
     <small>THE KAGINOLO EXPERIENCE</small>
     <h2>Made for every occasion.</h2>
+
     <p>
       Thoughtful food experiences for the moments that bring people together.
     </p>
   </div>
 
   <div class="service-grid">
+
     <article class="service-card">
       <div class="service-number">01</div>
       <h3>Sharing Platters</h3>
@@ -487,13 +656,17 @@ footer{
         Personalised food selections for occasions that call for something special.
       </p>
     </article>
+
   </div>
 </section>
+
+<!-- MENU -->
 
 <section class="menu-section" id="menu">
   <div class="section-heading">
     <small>PREPARED WITH CARE</small>
     <h2>The KAGINOLO menu.</h2>
+
     <p>
       Explore our available platter selections.
       New additions will be introduced as the collection grows.
@@ -505,16 +678,20 @@ footer{
   </div>
 </section>
 
+<!-- GALLERY -->
+
 <section class="gallery-section" id="gallery">
   <div class="section-heading">
     <small>A TASTE OF KAGINOLO</small>
     <h2>Beautifully served.</h2>
+
     <p>
       Food made to be enjoyed, shared and remembered.
     </p>
   </div>
 
   <div class="gallery-grid">
+
     <div class="gallery-item">
       <img
         src="https://images.unsplash.com/photo-1547592180-85f173990554?w=900"
@@ -544,96 +721,247 @@ footer{
       >
       <div class="gallery-label">Beautifully Served</div>
     </div>
+
   </div>
 </section>
+
+<!-- DELIVERY -->
 
 <section class="delivery">
   <div class="eyebrow">SERVING YOUR AREA</div>
+
   <h2>Good food, delivered.</h2>
+
   <p>Delivery and collection available.</p>
+
   <p class="areas">PRETORIA · SOSHANGUVE · MIDRAND</p>
 </section>
 
+<!-- CUSTOMER ENQUIRIES -->
+
 <section class="contact" id="contact">
+
   <div class="section-heading">
     <small>LET'S MAKE IT SPECIAL</small>
     <h2>Let's talk catering.</h2>
+
     <p class="contact-copy">
       Planning a gathering or looking for the perfect platter?
-      KAGINOLO is here to help make your occasion special.
+      Send us your enquiry and let KAGINOLO help make your occasion special.
     </p>
-    <div class="contact-pending">
-      CUSTOMER CONTACT DETAILS TO BE ADDED
-    </div>
   </div>
+
+  <form id="enquiry-form" class="enquiry-form">
+
+    <div class="form-grid">
+
+      <div class="form-field">
+        <label for="customer_name">Full name *</label>
+        <input
+          id="customer_name"
+          name="customer_name"
+          type="text"
+          maxlength="100"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="contact_number">Phone number *</label>
+        <input
+          id="contact_number"
+          name="contact_number"
+          type="tel"
+          maxlength="30"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="event_date">Event / delivery date *</label>
+        <input
+          id="event_date"
+          name="event_date"
+          type="date"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="guest_count">Number of guests</label>
+        <input
+          id="guest_count"
+          name="guest_count"
+          type="number"
+          min="1"
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="service_type">What are you interested in? *</label>
+
+        <select
+          id="service_type"
+          name="service_type"
+          required
+        >
+          <option value="">Select an option</option>
+          <option value="Sharing Platters">Sharing Platters</option>
+          <option value="Event Catering">Event Catering</option>
+          <option value="Custom Order">Custom Order</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-field full-width">
+        <label for="delivery_area">Delivery area *</label>
+
+        <input
+          id="delivery_area"
+          name="delivery_area"
+          type="text"
+          maxlength="150"
+          placeholder="e.g. Pretoria, Soshanguve, Midrand"
+          required
+        >
+      </div>
+
+      <div class="form-field full-width">
+        <label for="request_details">Tell us about your order</label>
+
+        <textarea
+          id="request_details"
+          name="request_details"
+          rows="5"
+          maxlength="2000"
+          placeholder="Tell us what you have in mind..."
+        ></textarea>
+      </div>
+
+    </div>
+
+    <p class="delivery-notice">
+      <strong>PLEASE NOTE:</strong>
+      Delivery dates and preparation times are confirmed by KAGINOLO
+      according to your order and availability. Please enquire in advance.
+    </p>
+
+    <button
+      type="submit"
+      class="btn"
+      id="enquiry-submit"
+    >
+      SEND ENQUIRY
+    </button>
+
+    <p id="enquiry-message" role="status" aria-live="polite"></p>
+
+  </form>
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
   <div class="footer-name">KAGINOLO</div>
+
   <div class="footer-sub">CATERING SOLUTION</div>
-  <div class="footer-areas">PRETORIA · SOSHANGUVE · MIDRAND</div>
-  <div class="footer-tagline">GOOD FOOD. BEAUTIFULLY SERVED.</div>
+
+  <div class="footer-areas">
+    PRETORIA · SOSHANGUVE · MIDRAND
+  </div>
+
+  <div class="footer-tagline">
+    GOOD FOOD. BEAUTIFULLY SERVED.
+  </div>
+
   <div class="footer-copy">
     © 2026 KAGINOLO CATERING. ALL RIGHTS RESERVED.
   </div>
 </footer>
 
+<!-- SUPABASE -->
+
 <script>
 const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
 
-async function loadKaginoloPlatters() {
+/* LOAD PUBLIC MENU */
+
+async function loadKaginoloPlatters(){
+
   const platterList = document.getElementById("platter-list");
 
-  const { data, error } = await supabaseClient
+  const {data,error} = await supabaseClient
     .from("menu_items")
     .select("id,name,description,price,serves,image_url")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
+    .eq("is_published",true)
+    .order("created_at",{ascending:false});
 
-  if (error) {
-    console.error("KAGINOLO menu error:", error.message);
+  if(error){
+
+    console.error("KAGINOLO menu error:",error.message);
+
     platterList.innerHTML =
       '<p class="menu-notice">Our menu is temporarily unavailable. Please contact us for enquiries.</p>';
+
     return;
   }
 
-  if (!data || data.length === 0) {
+  if(!data || data.length === 0){
+
     platterList.innerHTML =
       '<p class="menu-notice">Our menu collection is being updated. Please check back soon.</p>';
+
     return;
   }
 
   platterList.innerHTML = "";
 
   data.forEach(item => {
+
     const card = document.createElement("article");
     card.className = "menu-card";
 
     const imageBox = document.createElement("div");
     imageBox.className = "menu-image";
 
-    if (item.image_url) {
+    if(item.image_url){
+
       const image = document.createElement("img");
+
       image.src = item.image_url;
       image.alt = item.name || "KAGINOLO platter";
       image.loading = "lazy";
 
-      image.onerror = function() {
+      image.onerror = function(){
         imageBox.innerHTML = "";
         imageBox.textContent = "KAGINOLO";
       };
 
       imageBox.appendChild(image);
-    } else {
+
+    }else{
+
       imageBox.textContent = "KAGINOLO";
+
     }
 
     const info = document.createElement("div");
@@ -646,25 +974,124 @@ async function loadKaginoloPlatters() {
     description.textContent = item.description || "";
 
     const serves = document.createElement("p");
+
     serves.textContent = item.serves
       ? "Serves " + item.serves
       : "";
 
-    info.append(name, description, serves);
+    info.append(name,description,serves);
 
-    if (item.price !== null && item.price !== undefined) {
+    if(item.price !== null && item.price !== undefined){
+
       const price = document.createElement("p");
+
       price.className = "menu-price";
       price.textContent = "R" + Number(item.price).toFixed(2);
+
       info.appendChild(price);
+
     }
 
-    card.append(imageBox, info);
+    card.append(imageBox,info);
+
     platterList.appendChild(card);
+
   });
+
 }
 
+/* SUBMIT CUSTOMER ENQUIRY */
+
+const enquiryForm = document.getElementById("enquiry-form");
+
+if(enquiryForm){
+
+  enquiryForm.addEventListener("submit",async(event)=>{
+
+    event.preventDefault();
+
+    const submitButton =
+      document.getElementById("enquiry-submit");
+
+    const message =
+      document.getElementById("enquiry-message");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "SENDING...";
+    message.textContent = "";
+
+    try{
+
+      const formData = new FormData(enquiryForm);
+
+      const rawGuestCount = formData.get("guest_count");
+
+      const enquiry = {
+
+        customer_name:
+          String(formData.get("customer_name") || "").trim(),
+
+        contact_number:
+          String(formData.get("contact_number") || "").trim(),
+
+        email:
+          String(formData.get("email") || "").trim() || null,
+
+        event_date:
+          String(formData.get("event_date") || ""),
+
+        guest_count:
+          rawGuestCount ? Number(rawGuestCount) : null,
+
+        service_type:
+          String(formData.get("service_type") || ""),
+
+        delivery_area:
+          String(formData.get("delivery_area") || "").trim(),
+
+        request_details:
+          String(formData.get("request_details") || "").trim() || null,
+
+        status:"new"
+
+      };
+
+      const {error} = await supabaseClient
+        .from("customer_enquiries")
+        .insert(enquiry);
+
+      if(error){
+        throw error;
+      }
+
+      enquiryForm.reset();
+
+      message.textContent =
+        "Thank you! Your enquiry has been received. KAGINOLO will contact you to confirm availability and delivery.";
+
+    }catch(error){
+
+      console.error(
+        "Enquiry submission failed:",
+        error
+      );
+
+      message.textContent =
+        "Sorry, we couldn't send your enquiry. Please try again or contact us directly.";
+
+    }
+
+    submitButton.disabled = false;
+    submitButton.textContent = "SEND ENQUIRY";
+
+  });
+
+}
+
+/* START WEBSITE */
+
 loadKaginoloPlatters();
+
 </script>
 
 </body>

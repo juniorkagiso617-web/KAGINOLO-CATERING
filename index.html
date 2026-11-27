@@ -2,682 +2,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KAGINOLO | Premium Catering</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:Georgia,serif;background:#f5f1e9;color:#25251f}
-header{background:#20211e;color:#f5f1e9;padding:25px 7%;display:flex;justify-content:space-between;align-items:center}
+
+header{
+  background:#20211e;color:#f5f1e9;padding:25px 7%;
+  display:flex;justify-content:space-between;align-items:center
+}
 .logo{font-size:25px;letter-spacing:5px;font-weight:bold}
-.logo span{display:block;font:10px Arial;letter-spacing:6px;text-align:center;margin-top:6px}
+.logo span{
+  display:block;font:10px Arial;letter-spacing:6px;
+  text-align:center;margin-top:6px
+}
 nav{display:flex;gap:25px}
-nav a{font:11px Arial;letter-spacing:1px;color:#eee8dc;text-decoration:none}
-.hero{min-height:570px;background:linear-gradient(90deg,rgba(20,21,18,.88),rgba(20,21,18,.25)),url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1800') center/cover;display:flex;align-items:center;padding:80px 9%;color:white}
+nav a{
+  font:11px Arial;letter-spacing:1px;
+  color:#eee8dc;text-decoration:none
+}
+
+.hero{
+  min-height:570px;
+  background:linear-gradient(90deg,rgba(20,21,18,.88),rgba(20,21,18,.25)),
+  url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1800') center/cover;
+  display:flex;align-items:center;padding:80px 9%;color:white
+}
 .hero-content{max-width:600px}
 .eyebrow{font:11px Arial;letter-spacing:4px;color:#d4b982}
-h1{font-size:clamp(43px,7vw,78px);font-weight:normal;line-height:1.08;margin:25px 0}
-.hero p{font:15px Arial;line-height:1.9;color:#e4dfd4;max-width:440px}
-.btn{display:inline-block;background:#c6a66f;color:#20211e;text-decoration:none;padding:17px 28px;font:11px Arial;letter-spacing:2px;margin-top:30px}
+h1{
+  font-size:clamp(43px,7vw,78px);font-weight:normal;
+  line-height:1.08;margin:25px 0
+}
+.hero p{
+  font:15px Arial;line-height:1.9;
+  color:#e4dfd4;max-width:440px
+}
+.btn{
+  display:inline-block;background:#c6a66f;color:#20211e;
+  text-decoration:none;padding:17px 28px;
+  font:11px Arial;letter-spacing:2px;margin-top:30px
+}
+
 section{padding:85px 8%}
 .section-top{text-align:center;margin-bottom:45px}
 .section-top small{font:11px Arial;letter-spacing:4px;color:#9d7944}
 .section-top h2{font-size:38px;font-weight:normal;margin-top:15px}
-.intro{max-width:650px;margin:auto;text-align:center;font:15px Arial;line-height:2;color:#69675f}
+
+.intro{
+  max-width:650px;margin:auto;text-align:center;
+  font:15px Arial;line-height:2;color:#69675f
+}
+
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .gallery img{width:100%;height:280px;object-fit:cover}
 .gallery-item p{text-align:center;font-size:19px;margin-top:15px}
+
 .packages{background:#e9e2d5}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{background:#f8f5ee;padding:38px 25px;text-align:center}
 .card h3{font-size:23px;font-weight:normal;margin-bottom:15px}
 .card p{font:13px Arial;line-height:1.9;color:#6b685f}
-.card a{display:inline-block;color:#92713e;font:11px Arial;letter-spacing:2px;margin-top:22px;text-decoration:none}
+.card a{
+  display:inline-block;color:#92713e;font:11px Arial;
+  letter-spacing:2px;margin-top:22px;text-decoration:none
+}
+
+/* PLATTER MENU */
+.platter-menu{background:#f5f1e9;color:#292820}
+.menu-inner{max-width:1100px;margin:auto}
+.menu-heading{text-align:center;margin-bottom:35px}
+.menu-heading small{
+  font:11px Arial;letter-spacing:4px;color:#9d7944
+}
+.menu-heading h2{font-size:38px;font-weight:normal;margin:15px 0}
+.menu-heading p{font:14px Arial;color:#69675f;line-height:1.8}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px
+}
+.menu-card{
+  background:#fff;border-radius:8px;
+  overflow:hidden;padding-bottom:20px
+}
+.menu-card img{
+  width:100%;height:220px;object-fit:cover;display:block
+}
+.menu-placeholder{
+  height:170px;background:#e9e2d5;
+  display:flex;align-items:center;justify-content:center;
+  font:13px Arial;letter-spacing:4px;color:#92713e
+}
+.menu-info{padding:20px}
+.menu-info h3{font-size:22px;font-weight:normal;margin-bottom:12px}
+.menu-info p{font:13px Arial;line-height:1.8;color:#69675f;margin:7px 0}
+.menu-price{font: bold 22px Arial!important;color:#25251f!important;margin-top:15px!important}
+.menu-card a{
+  display:inline-block;margin-top:15px;
+  color:#92713e;font:11px Arial;
+  letter-spacing:1px;text-decoration:none
+}
+.menu-notice{
+  text-align:center;font:14px Arial;
+  line-height:1.8;color:#69675f;padding:20px
+}
+
 .delivery{background:#242520;color:#f5f1e9;text-align:center}
 .delivery h2{font-size:36px;font-weight:normal;margin:18px 0}
 .delivery p{font:14px Arial;color:#d0cabe;line-height:2}
+
 .order{text-align:center}
-.order p{font:14px Arial;line-height:2;color:#66645d;max-width:540px;margin:20px auto}
-footer{background:#171815;color:#c8c0b2;text-align:center;padding:40px 15px;font:11px Arial;letter-spacing:2px;line-height:2.5}
+.order p{
+  font:14px Arial;line-height:2;color:#66645d;
+  max-width:540px;margin:20px auto
+}
+
+footer{
+  background:#171815;color:#c8c0b2;
+  text-align:center;padding:40px 15px;
+  font:11px Arial;letter-spacing:2px;line-height:2.5
+}
+footer .footer-name{
+  color:#f5f1e9;font: bold 22px Georgia,serif;
+  letter-spacing:5px
+}
+footer .footer-tagline{color:#d4b982}
+footer .footer-small{
+  color:#88877f;font-size:10px;letter-spacing:1px
+}
+
 @media(max-width:700px){
-header{flex-direction:column;gap:22px}
-nav{gap:15px}
-.hero{min-height:520px;padding:65px 7%}
-section{padding:65px 7%}
-.gallery,.cards{grid-template-columns:1fr}
-.gallery img{height:260px}
-.section-top h2{font-size:31px}
+  header{flex-direction:column;gap:22px}
+  nav{gap:15px}
+  .hero{min-height:520px;padding:65px 7%}
+  section{padding:65px 7%}
+  .gallery,.cards{grid-template-columns:1fr}
+  .gallery img{height:260px}
+  .section-top h2,.menu-heading h2{font-size:31px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">KAGINOLO<span>CATERING</span></div>
-<nav>
-<a href="#about">ABOUT</a>
-<a href="#platters">PLATTERS</a>
-<a href="#contact">CONTACT</a>
-</nav>
+  <div class="logo">KAGINOLO<span>CATERING</span></div>
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#platters">PLATTERS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
 </header>
 
 <div class="hero">
-<div class="hero-content">
-<div class="eyebrow">THE ART OF GOOD FOOD</div>
-<h1>Made to be<br>shared.</h1>
-<p>Thoughtfully prepared catering and beautifully presented platters for gatherings, celebrations and moments worth remembering.</p>
-<a class="btn" href="#platters">DISCOVER KAGINOLO</a>
-</div>
+  <div class="hero-content">
+    <div class="eyebrow">THE ART OF GOOD FOOD</div>
+    <h1>Made to be<br>shared.</h1>
+    <p>Thoughtfully prepared catering and beautifully presented platters for gatherings, celebrations and moments worth remembering.</p>
+    <a class="btn" href="#platters">DISCOVER KAGINOLO</a>
+  </div>
 </div>
 
 <section id="about">
-<div class="section-top">
-<small>OUR PHILOSOPHY</small>
-<h2>More than just food.</h2>
-</div>
-<p class="intro">At KAGINOLO, every gathering deserves something special. We bring people together through delicious food, thoughtful presentation and a passion for serving memorable experiences.</p>
+  <div class="section-top">
+    <small>OUR PHILOSOPHY</small>
+    <h2>More than just food.</h2>
+  </div>
+  <p class="intro">At KAGINOLO, every gathering deserves something special. We bring people together through delicious food, thoughtful presentation and a passion for serving memorable experiences.</p>
 </section>
 
-<section id="platters">
-<div class="section-top">
-<small>PREPARED WITH CARE</small>
-<h2>Our Food</h2>
-</div>
-<div class="gallery">
-<div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800" alt="Fresh food presentation">
-<p>Fresh & Delicious</p>
-</div>
-<div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" alt="Grilled food">
-<p>Made for Sharing</p>
-</div>
-<div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?w=800" alt="Beautifully prepared food">
-<p>Beautifully Served</p>
-</div>
-</div>
+<section id="food">
+  <div class="section-top">
+    <small>PREPARED WITH CARE</small>
+    <h2>Our Food</h2>
+  </div>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800" alt="Fresh food presentation">
+      <p>Fresh & Delicious</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" alt="Grilled food">
+      <p>Made for Sharing</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1515003197210-e0cd7184f8b5?w=800" alt="Beautifully prepared food">
+      <p>Beautifully Served</p>
+    </div>
+  </div>
 </section>
 
 <section class="packages">
-<div class="section-top">
-<small>FOR EVERY OCCASION</small>
-<h2>What We Offer</h2>
-</div>
-<div class="cards">
-<div class="card">
-<h3>Sharing Platters</h3>
-<p>Generous selections made for family, friends and guests.</p>
-<a href="#contact">ENQUIRE →</a>
-</div>
-<div class="card">
-<h3>Event Catering</h3>
-<p>Food for celebrations, special occasions and gatherings.</p>
-<a href="#contact">ENQUIRE →</a>
-</div>
-<div class="card">
-<h3>Custom Orders</h3>
-<p>Tell us what you have in mind and let's plan something special.</p>
-<a href="#contact">ENQUIRE →</a>
-</div>
-</div>
+  <div class="section-top">
+    <small>FOR EVERY OCCASION</small>
+    <h2>What We Offer</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3>Sharing Platters</h3>
+      <p>Generous selections made for family, friends and guests.</p>
+      <a href="#contact">ENQUIRE →</a>
+    </div>
+    <div class="card">
+      <h3>Event Catering</h3>
+      <p>Food for celebrations, special occasions and gatherings.</p>
+      <a href="#contact">ENQUIRE →</a>
+    </div>
+    <div class="card">
+      <h3>Custom Orders</h3>
+      <p>Tell us what you have in mind and let's plan something special.</p>
+      <a href="#contact">ENQUIRE →</a>
+    </div>
+  </div>
+</section>
+
+<section class="platter-menu" id="platters">
+  <div class="menu-inner">
+    <div class="menu-heading">
+      <small>MADE WITH CARE</small>
+      <h2>Our Platters</h2>
+      <p>Discover our freshly prepared KAGINOLO selections.</p>
+    </div>
+    <div class="menu-grid" id="platter-list">
+      <p class="menu-notice">Loading our platters...</p>
+    </div>
+  </div>
 </section>
 
 <section class="delivery">
-<div class="eyebrow">SERVING YOUR AREA</div>
-<h2>Good food, delivered.</h2>
-<p>Delivery and collection available.</p>
-<p>Pretoria · Centurion · Midrand</p>
+  <div class="eyebrow">SERVING YOUR AREA</div>
+  <h2>Good food, delivered.</h2>
+  <p>Delivery and collection available.</p>
+  <p>Pretoria · Soshanguve · Midrand</p>
 </section>
 
 <section class="order" id="contact">
-<div class="section-top">
-<small>LET'S MAKE IT SPECIAL</small>
-<h2>Let's talk catering.</h2>
-</div>
-<p>Planning a gathering or looking for the perfect platter? Get in touch with KAGINOLO to discuss your requirements and receive a quote.</p>
-<a class="btn" href="mailto:">CONTACT KAGINOLO</a>
+  <div class="section-top">
+    <small>LET'S MAKE IT SPECIAL</small>
+    <h2>Let's talk catering.</h2>
+  </div>
+  <p>Planning a gathering or looking for the perfect platter? Get in touch with KAGINOLO to discuss your requirements and receive a quote.</p>
+  <a class="btn" href="mailto:">CONTACT KAGINOLO</a>
 </section>
 
 <footer>
-KAGINOLO CATERING<br>
-GOOD FOOD. BEAUTIFULLY SERVED.<br>
-PRETORIA · CENTURION · MIDRAND
+  <div class="footer-name">KAGINOLO</div>
+  <div class="footer-tagline">CATERING SOLUTION</div>
+  <div>PRETORIA · SOSHANGUVE · MIDRAND</div>
+  <div>GOOD FOOD. BEAUTIFULLY SERVED.</div>
+  <div class="footer-small">© 2026 KAGINOLO CATERING. ALL RIGHTS RESERVED.</div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  const SUPABASE_URL = https://psmsmscsfcaetyayqkty.supabase.co/rest/v1/";
-  const SUPABASE_PUBLISHABLE_KEY ="sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
-
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY);
-console.log("KAGINOLO Supabase client loaded:", !!supabaseClient);
-</script>
-
-<style>
-.platter-menu {
-  padding: 65px 20px;
-  background: #f5f2ec;
-  color: #292820;
-}
-.platter-menu .menu-inner {
-  max-width: 1100px;
-  margin: auto;
-}
-.platter-menu .menu-heading {
-  margin-bottom: 30px;
-}
-.platter-menu .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 22px;
-}
-.platter-menu .menu-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 20px;
-}
-.platter-menu .menu-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-.platter-menu .menu-card .menu-info {
-  padding: 18px;
-}
-.platter-menu .menu-card h3 {
-  margin-top: 0;
-}
-.platter-menu .menu-price {
-  font-size: 22px;
-  font-weight: bold;
-}
-.platter-menu .menu-card a {
-  display: inline-block;
-  margin-top: 12px;
-  color: #292820;
-  font-weight: bold;
-}
-</style>
-
-<script>
-(async function () {
-  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
-  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
-
-  const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  const section = document.createElement("section");
-  section.className = "platter-menu";
-
-  const inner = document.createElement("div");
-  inner.className = "menu-inner";
-
-  const heading = document.createElement("div");
-  heading.className = "menu-heading";
-
-  const small = document.createElement("small");
-  small.textContent = "MADE WITH CARE";
-
-  const title = document.createElement("h2");
-  title.textContent = "Our Platters";
-
-  const subtitle = document.createElement("p");
-  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
-
-  heading.append(small, title, subtitle);
-
-  const grid = document.createElement("div");
-  grid.className = "menu-grid";
-
-  inner.append(heading, grid);
-  section.appendChild(inner);
-
-  const deliverySection = document.querySelector(".delivery");
-
-  if (deliverySection) {
-    deliverySection.before(section);
-  } else {
-    document.body.appendChild(section);
-  }
-
-  const { data, error } = await client
-    .from("menu_items")
-    .select("id,name,description,category,price,serves,image_url")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
-    grid.appendChild(notice);
-    console.error("Menu loading error:", error.message);
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter collection is being updated. Please check back soon.";
-    grid.appendChild(notice);
-    return;
-  }
-
-  data.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "menu-card";
-
-    if (item.image_url) {
-      const image = document.createElement("img");
-      image.src = item.image_url;
-      image.alt = item.name;
-      image.loading = "lazy";
-      card.appendChild(image);
-    }
-
-    const info = document.createElement("div");
-    info.className = "menu-info";
-
-    const name = document.createElement("h3");
-    name.textContent = item.name;
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "";
-
-    const serves = document.createElement("p");
-    serves.textContent = item.serves ? "Serves " + item.serves : "";
-
-    const price = document.createElement("p");
-    price.className = "menu-price";
-    price.textContent = "R" + Number(item.price).toFixed(2);
-
-    const link = document.createElement("a");
-    link.href = "#contact";
-    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
-
-    info.append(name, description, serves, price, link);
-    card.appendChild(info);
-    grid.appendChild(card);
-  });
-})();
-</script>
-
-<style>
-.platter-menu {
-  padding: 65px 20px;
-  background: #f5f2ec;
-  color: #292820;
-}
-.platter-menu .menu-inner {
-  max-width: 1100px;
-  margin: auto;
-}
-.platter-menu .menu-heading {
-  margin-bottom: 30px;
-}
-.platter-menu .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 22px;
-}
-.platter-menu .menu-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 20px;
-}
-.platter-menu .menu-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-.platter-menu .menu-card .menu-info {
-  padding: 18px;
-}
-.platter-menu .menu-card h3 {
-  margin-top: 0;
-}
-.platter-menu .menu-price {
-  font-size: 22px;
-  font-weight: bold;
-}
-.platter-menu .menu-card a {
-  display: inline-block;
-  margin-top: 12px;
-  color: #292820;
-  font-weight: bold;
-}
-</style>
-
-<script>
-(async function () {
-  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
-  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
-
-  const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  const section = document.createElement("section");
-  section.className = "platter-menu";
-
-  const inner = document.createElement("div");
-  inner.className = "menu-inner";
-
-  const heading = document.createElement("div");
-  heading.className = "menu-heading";
-
-  const small = document.createElement("small");
-  small.textContent = "MADE WITH CARE";
-
-  const title = document.createElement("h2");
-  title.textContent = "Our Platters";
-
-  const subtitle = document.createElement("p");
-  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
-
-  heading.append(small, title, subtitle);
-
-  const grid = document.createElement("div");
-  grid.className = "menu-grid";
-
-  inner.append(heading, grid);
-  section.appendChild(inner);
-
-  const deliverySection = document.querySelector(".delivery");
-
-  if (deliverySection) {
-    deliverySection.before(section);
-  } else {
-    document.body.appendChild(section);
-  }
-
-  const { data, error } = await client
-    .from("menu_items")
-    .select("id,name,description,category,price,serves,image_url")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
-    grid.appendChild(notice);
-    console.error("Menu loading error:", error.message);
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter collection is being updated. Please check back soon.";
-    grid.appendChild(notice);
-    return;
-  }
-
-  data.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "menu-card";
-
-    if (item.image_url) {
-      const image = document.createElement("img");
-      image.src = item.image_url;
-      image.alt = item.name;
-      image.loading = "lazy";
-      card.appendChild(image);
-    }
-
-    const info = document.createElement("div");
-    info.className = "menu-info";
-
-    const name = document.createElement("h3");
-    name.textContent = item.name;
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "";
-
-    const serves = document.createElement("p");
-    serves.textContent = item.serves ? "Serves " + item.serves : "";
-
-    const price = document.createElement("p");
-    price.className = "menu-price";
-    price.textContent = "R" + Number(item.price).toFixed(2);
-
-    const link = document.createElement("a");
-    link.href = "#contact";
-    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
-
-    info.append(name, description, serves, price, link);
-    card.appendChild(info);
-    grid.appendChild(card);
-  });
-})();
-</script>
-
-<style>
-.platter-menu {
-  padding: 65px 20px;
-  background: #f5f2ec;
-  color: #292820;
-}
-.platter-menu .menu-inner {
-  max-width: 1100px;
-  margin: auto;
-}
-.platter-menu .menu-heading {
-  margin-bottom: 30px;
-}
-.platter-menu .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 22px;
-}
-.platter-menu .menu-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  padding-bottom: 20px;
-}
-.platter-menu .menu-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-.platter-menu .menu-card .menu-info {
-  padding: 18px;
-}
-.platter-menu .menu-card h3 {
-  margin-top: 0;
-}
-.platter-menu .menu-price {
-  font-size: 22px;
-  font-weight: bold;
-}
-.platter-menu .menu-card a {
-  display: inline-block;
-  margin-top: 12px;
-  color: #292820;
-  font-weight: bold;
-}
-</style>
-
-<script>
-(async function () {
-  const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
-  const SUPABASE_KEY = "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
-
-  const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  const section = document.createElement("section");
-  section.className = "platter-menu";
-
-  const inner = document.createElement("div");
-  inner.className = "menu-inner";
-
-  const heading = document.createElement("div");
-  heading.className = "menu-heading";
-
-  const small = document.createElement("small");
-  small.textContent = "MADE WITH CARE";
-
-  const title = document.createElement("h2");
-  title.textContent = "Our Platters";
-
-  const subtitle = document.createElement("p");
-  subtitle.textContent = "Discover our freshly prepared KAGINOLO selections.";
-
-  heading.append(small, title, subtitle);
-
-  const grid = document.createElement("div");
-  grid.className = "menu-grid";
-
-  inner.append(heading, grid);
-  section.appendChild(inner);
-
-  const deliverySection = document.querySelector(".delivery");
-
-  if (deliverySection) {
-    deliverySection.before(section);
-  } else {
-    document.body.appendChild(section);
-  }
-
-  const { data, error } = await client
-    .from("menu_items")
-    .select("id,name,description,category,price,serves,image_url")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter menu is temporarily unavailable. Please contact us for enquiries.";
-    grid.appendChild(notice);
-    console.error("Menu loading error:", error.message);
-    return;
-  }
-
-  if (!data || data.length === 0) {
-    const notice = document.createElement("p");
-    notice.textContent = "Our platter collection is being updated. Please check back soon.";
-    grid.appendChild(notice);
-    return;
-  }
-
-  data.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "menu-card";
-
-    if (item.image_url) {
-      const image = document.createElement("img");
-      image.src = item.image_url;
-      image.alt = item.name;
-      image.loading = "lazy";
-      card.appendChild(image);
-    }
-
-    const info = document.createElement("div");
-    info.className = "menu-info";
-
-    const name = document.createElement("h3");
-    name.textContent = item.name;
-
-    const description = document.createElement("p");
-    description.textContent = item.description || "";
-
-    const serves = document.createElement("p");
-    serves.textContent = item.serves ? "Serves " + item.serves : "";
-
-    const price = document.createElement("p");
-    price.className = "menu-price";
-    price.textContent = "R" + Number(item.price).toFixed(2);
-
-    const link = document.createElement("a");
-    link.href = "#contact";
-    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
-
-    info.append(name, description, serves, price, link);
-    card.appendChild(info);
-    grid.appendChild(card);
-  });
-})();
-</script>
-<section class="platter-menu">
-  <h2>Our Platters</h2>
-  <p>Discover the KAGINOLO collection.</p>
-  <div id="platter-list">Loading our platters...</div>
-</section>
-<script>
-const KAGINOLO_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
-const KAGINOLO_KEY = "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
-
-const menuClient = window.supabase.createClient(
-  KAGINOLO_URL,
-  KAGINOLO_KEY
+const SUPABASE_URL = "https://psmsmscsfcaetyayqkty.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_nc6RlN8ZAEzEnGbw_u-oXg_J8Www63k";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
 );
-</script>
-<script>
-async function loadKaginoloPlatters() {
-  const list = document.getElementById("platter-list");
-  list.textContent = "Loading platters...";
 
-  const { data, error } = await menuClient
+async function loadKaginoloPlatters() {
+  const platterList = document.getElementById("platter-list");
+
+  const { data, error } = await supabaseClient
     .from("menu_items")
-    .select("name,description,price,serves,image_url")
+    .select("id,name,description,price,serves,image_url")
     .eq("is_published", true)
     .order("created_at", { ascending: false });
 
   if (error) {
-    list.textContent = "Please contact us for our platter menu.";
-    console.error(error);
+    console.error("KAGINOLO menu error:", error.message);
+    platterList.innerHTML =
+      '<p class="menu-notice">Our platter menu is temporarily unavailable. Please contact us for enquiries.</p>';
     return;
   }
-
-  list.replaceChildren();
 
   if (!data || data.length === 0) {
-    list.textContent = "Our platter menu is being updated.";
+    platterList.innerHTML =
+      '<p class="menu-notice">Our platter collection is being updated. Please check back soon.</p>';
     return;
   }
 
+  platterList.innerHTML = "";
+
   data.forEach(item => {
-    const card = document.createElement("div");
-    card.style.cssText = "background:white;padding:20px;margin:15px 0;border-radius:10px;";
+    const card = document.createElement("article");
+    card.className = "menu-card";
 
     if (item.image_url) {
-      const img = document.createElement("img");
-      img.src = item.image_url;
-      img.alt = item.name;
-      img.style.cssText = "width:100%;max-height:250px;object-fit:cover;border-radius:8px;";
-      card.appendChild(img);
+      const image = document.createElement("img");
+      image.src = item.image_url;
+      image.alt = item.name || "KAGINOLO platter";
+      image.loading = "lazy";
+      image.onerror = function() {
+        this.style.display = "none";
+      };
+      card.appendChild(image);
+    } else {
+      const placeholder = document.createElement("div");
+      placeholder.className = "menu-placeholder";
+      placeholder.textContent = "KAGINOLO";
+      card.appendChild(placeholder);
     }
 
+    const info = document.createElement("div");
+    info.className = "menu-info";
+
     const name = document.createElement("h3");
-    name.textContent = item.name;
+    name.textContent = item.name || "KAGINOLO Platter";
 
     const description = document.createElement("p");
     description.textContent = item.description || "";
 
     const serves = document.createElement("p");
-    serves.textContent = "Serves " + (item.serves || "Available on request");
+    serves.textContent = item.serves ? "Serves " + item.serves : "";
 
-    const price = document.createElement("h3");
+    const price = document.createElement("p");
+    price.className = "menu-price";
     price.textContent = "R" + Number(item.price).toFixed(2);
 
-    card.append(name, description, serves, price);
-    list.appendChild(card);
+    const link = document.createElement("a");
+    link.href = "#contact";
+    link.textContent = "ENQUIRE ABOUT THIS PLATTER →";
+
+    info.append(name, description, serves, price, link);
+    card.appendChild(info);
+    platterList.appendChild(card);
   });
 }
 
 loadKaginoloPlatters();
 </script>
+
 </body>
 </html>
+
